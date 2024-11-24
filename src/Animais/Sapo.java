@@ -5,10 +5,10 @@ import Interfaces.Aquatico;
 import Interfaces.Ovos;
 import Interfaces.Veneno;
 
-public class Sapos extends Animal implements Anfibio , Veneno , Ovos , Aquatico {
+public class Sapo extends Animal implements Anfibio , Veneno , Ovos , Aquatico {
 
 
-    public Sapos(String nome, int idade, String sexo) {
+    public Sapo(String nome, int idade, String sexo) {
 
         super(nome, idade, sexo);
     }
