@@ -10,10 +10,6 @@ public class Aguia extends Animal implements Voar, Ovos, Aves {
         super(nome, idade, sexo);
     }
 
-    @Override
-    public void local() {
-        System.out.println("As Aguias estão localizadas no setor Sul do Zoo!");
-    }
 
     @Override
     public void alimento() {

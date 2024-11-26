@@ -11,7 +11,6 @@ public abstract class Animal {
         this.sexo = sexo;
     }
 
-    public abstract void local();
     public abstract void alimento();
     public abstract void sangue();
 

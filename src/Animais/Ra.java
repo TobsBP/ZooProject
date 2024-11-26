@@ -10,10 +10,6 @@ public class Ra extends Animal implements Anfibio , Ovos , Aquatico {
         super(nome, idade, sexo);
     }
 
-    @Override
-    public void local() {
-        System.out.println("As rãs estão localizadas na Zona Norte do Zoo!");
-    }
 
     public void alimento() {
         System.out.println("As rãs sao carnivoras!");

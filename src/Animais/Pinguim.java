@@ -11,12 +11,6 @@ public class Pinguim extends Animal implements Aves , Aquatico , Ovos {
     }
 
     @Override
-    public void local() {
-        System.out.println("Os pinguins estão localizados na zona Oeste do Zoo!");
-
-    }
-
-    @Override
     public void alimento() {
         System.out.println("Os pinguins sao animais carnivoros!");
 

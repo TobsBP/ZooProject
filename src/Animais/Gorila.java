@@ -9,11 +9,6 @@ public class Gorila extends Animal implements Terrestre , Mamifero {
         super(nome, idade, sexo);
     }
 
-    @Override
-    public void local() {
-        System.out.println("Os Gorilas estão localizados na parte Leste do Zoo!");
-
-    }
 
     @Override
     public void alimento() {

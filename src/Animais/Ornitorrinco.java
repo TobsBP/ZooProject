@@ -12,12 +12,6 @@ public class Ornitorrinco extends Animal implements Aquatico, Ovos, Mamifero , V
     }
 
     @Override
-    public void local() {
-        System.out.println("Os Ornitorrincos estão localizados na parte Leste do Zoo!");
-
-    }
-
-    @Override
     public void alimento() {
         System.out.println("Os ornitorrincos sao animais carnivoros!");
 

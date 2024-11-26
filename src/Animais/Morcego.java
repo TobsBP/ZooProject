@@ -9,11 +9,6 @@ public class Morcego extends Animal implements Voar , Mamifero {
         super(nome, idade, sexo);
     }
 
-    @Override
-    public void local() {
-        System.out.println("Os Morcegos estão localizados na Sul do Zoo!");
-
-    }
 
     @Override
     public void alimento() {
