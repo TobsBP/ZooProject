@@ -11,6 +11,11 @@ public class Salamandra extends Animal implements Anfibio , Ovos, Aquatico, Vene
         super(nome, idade, sexo);
     }
 
+    @Override
+    public void local() {
+        System.out.println("As Salamandras estão localizadas na Zona Leste do Zoo!");
+    }
+
 
     @Override
     public void alimento() {

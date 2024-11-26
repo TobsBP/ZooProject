@@ -16,6 +16,12 @@ public class Lobo extends Animal implements Terrestre , Mamifero {
     }
 
     @Override
+    public void local() {
+        System.out.println("Os lobos estão localizados na parte Leste do Zoo!");
+
+    }
+
+    @Override
     public void sangue() {
         System.out.println("O lobo é um animal de Sangue quente!");
 

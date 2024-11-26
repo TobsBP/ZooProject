@@ -9,7 +9,11 @@ public class Jabuti extends Animal implements Reptil , Ovos , Terrestre {
 
         super(nome, idade, sexo);
     }
+    @Override
+    public void local() {
+        System.out.println("Os jabutis estão localizados na parte Norte do Zoo!");
 
+    }
 
     @Override
     public void alimento() {

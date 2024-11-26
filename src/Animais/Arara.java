@@ -10,6 +10,12 @@ public class Arara extends Animal implements Voar, Aves , Ovos {
         super(nome, idade, sexo);
     }
 
+    @Override
+    public void local() {
+        System.out.println("As Araras estão localizadas na parte Sul do Zoo!");
+
+    }
+
 
     @Override
     public void alimento() {
