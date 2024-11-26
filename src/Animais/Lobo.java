@@ -10,17 +10,13 @@ public class Lobo extends Animal implements Terrestre , Mamifero {
 
     @Override
     public void local() {
+        System.out.println("Os lobos estão localizados na parte Leste do Zoo!");
 
     }
 
     @Override
     public void alimento() {
         System.out.println("O lobo é um animal carnivoro!");
-
-    }
-
-    @Override
-    public void cuidador() {
 
     }
 
@@ -32,11 +28,13 @@ public class Lobo extends Animal implements Terrestre , Mamifero {
 
     @Override
     public void mamar() {
+        System.out.println("Os lobos normalmente amamentam seus filhotes por cerca de 6 a 8 semanas");
 
     }
 
     @Override
     public void terrestre() {
+        System.out.println("Os lobos, apesar de poderem nadar por corto períodos de tempo, tendem evitar a água, preferindo o meio terrestre.");
 
     }
 }

@@ -11,19 +11,16 @@ public class Morcego extends Animal implements Voar , Mamifero {
 
     @Override
     public void local() {
+        System.out.println("Os Morcegos estão localizados na Sul do Zoo!");
 
     }
 
     @Override
     public void alimento() {
-        System.out.println("Os morcegos podem ser tanto herbivoros quanto carnivoros!");
+        System.out.println("Os morcegos do nosso Zoo são todos frugívoros.");
 
     }
 
-    @Override
-    public void cuidador() {
-
-    }
 
     @Override
     public void sangue() {
@@ -33,11 +30,12 @@ public class Morcego extends Animal implements Voar , Mamifero {
 
     @Override
     public void mamar() {
-
+        System.out.println("Os Morcegos podem amamentar por cerca de 4 a 12 semanas");
     }
 
     @Override
     public void voar() {
+        System.out.println("Morcegos podem manter incríveis 12 horas de voo seguidas!");
 
     }
 }

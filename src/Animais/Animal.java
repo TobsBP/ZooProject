@@ -13,7 +13,6 @@ public abstract class Animal {
 
     public abstract void local();
     public abstract void alimento();
-    public abstract void cuidador();
     public abstract void sangue();
 
     public String getNome() {

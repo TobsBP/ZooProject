@@ -12,36 +12,33 @@ public class Ra extends Animal implements Anfibio , Ovos , Aquatico {
 
     @Override
     public void local() {
-
+        System.out.println("As rãs estão localizadas na Zona Norte do Zoo!");
     }
 
     public void alimento() {
-        System.out.println("As ras sao carnivoras!");
-    }
-
-    @Override
-    public void cuidador() {
-
+        System.out.println("As rãs sao carnivoras!");
     }
 
     @Override
     public void sangue() {
-        System.out.println("As ras sao animais de Sangue Frio!");
+        System.out.println("As rãs sao animais de Sangue Frio!");
 
     }
 
     @Override
     public void fase() {
-
+        System.out.println("As rãs possuem 3 fases de vida: ovo, girino e adulta!");
     }
 
     @Override
     public void nadar() {
+        System.out.println("As rãs, obrigatoriamente, precisam viver em um meio aquatico ou em um local extremamente úmido, ou morreram!");
 
     }
 
     @Override
     public void botaOvo() {
+        System.out.println("As rãs botam seus ovos na água, a falta de úmidade pode acarretar na morte do feto");
 
     }
 }

@@ -11,17 +11,13 @@ public class Gorila extends Animal implements Terrestre , Mamifero {
 
     @Override
     public void local() {
+        System.out.println("Os Gorilas estão localizados na parte Leste do Zoo!");
 
     }
 
     @Override
     public void alimento() {
-        System.out.println("Os gorilas sao animais herbivoros!");
-
-    }
-
-    @Override
-    public void cuidador() {
+        System.out.println("Os Gorilas sao animais herbivoros!");
 
     }
 
@@ -33,11 +29,13 @@ public class Gorila extends Animal implements Terrestre , Mamifero {
 
     @Override
     public void mamar() {
+        System.out.println("Os Gorilas normalmente amamentam seus filhotes por cerca de 2 a 3 anos.");
 
     }
 
     @Override
     public void terrestre() {
+        System.out.println("Os Gorilas são animais terrestre e totalmente incapazes de nadar devido a seu peso.");
 
     }
 }

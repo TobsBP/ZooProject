@@ -12,6 +12,7 @@ public class Crocodilo extends Animal implements Reptil , Ovos , Aquatico {
 
     @Override
     public void local() {
+        System.out.println("Os Crocodilos estão localizados na parte Norte do Zoo!");
 
     }
 
@@ -21,10 +22,6 @@ public class Crocodilo extends Animal implements Reptil , Ovos , Aquatico {
 
     }
 
-    @Override
-    public void cuidador() {
-
-    }
 
     @Override
     public void sangue() {
@@ -34,16 +31,19 @@ public class Crocodilo extends Animal implements Reptil , Ovos , Aquatico {
 
     @Override
     public void nadar() {
+        System.out.println("Os Crocodilos podem ficar até 2 horas submersos na água!");
 
     }
 
     @Override
     public void botaOvo() {
+        System.out.println("Os Crocodilos podem botar ovos enormes, chegando ate a 10 cm de comprimento!");
 
     }
 
     @Override
     public void escamasPlacas() {
+        System.out.println("As escamas de um Crocodilo são uma das mais resistentes do meio animal, podendo resister a impactos incríveis");
 
     }
 }

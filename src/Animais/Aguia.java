@@ -12,17 +12,12 @@ public class Aguia extends Animal implements Voar, Ovos, Aves {
 
     @Override
     public void local() {
-
+        System.out.println("As Aguias estão localizadas no setor Sul do Zoo!");
     }
 
     @Override
     public void alimento() {
-        System.out.println("A aguia é um animal carnivoro!");
-
-    }
-
-    @Override
-    public void cuidador() {
+        System.out.println("As Aguias são animais carnivoro!");
 
     }
 
@@ -34,16 +29,19 @@ public class Aguia extends Animal implements Voar, Ovos, Aves {
 
     @Override
     public void penagem() {
+        System.out.println("A penagem das Aguias variam do marrom escuro ao dourado!");
 
     }
 
     @Override
     public void botaOvo() {
+        System.out.println("As Aguias são capazes de botar ovos, possuindo muitas vezes mais de 4 cm de largura!");
 
     }
 
     @Override
     public void voar() {
+        System.out.println("As Aguias podem voar por mais de 8 horas seguidas!");
 
     }
 }

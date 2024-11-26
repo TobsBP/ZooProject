@@ -2,8 +2,9 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.util.*;
 import Animais.*;
+import Exception.Erro;
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception , Erro {
         // Caminho para o arquivo
         Path path = Paths.get("src/animais.txt");
 
@@ -12,6 +13,10 @@ public class Main {
 
         // Conjunto para armazenar os animais
         Set<Animal> animais = new HashSet<>();
+
+
+            DateTime dta = new DateTime(); 
+            System.out.println("Horario:" + dta.time_dateNow()); 
 
         // Processa cada linha do arquivo
         for (String dado : dados) {
@@ -84,7 +89,6 @@ public class Main {
             menu();
             op = sc.nextInt();
             sc.nextLine(); // Quebra de linha
-        
             switch (op) {
                 case 1:
                     System.out.println("Animais listados");
@@ -105,7 +109,13 @@ public class Main {
                     
                     String dadosAnimal = nome + "," + sexo + "," + idade + System.lineSeparator();
 
-                    Files.writeString(path, dadosAnimal, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+                    try { // peço que de uma olhada da aqui...
+
+                        Files.writeString(path, dadosAnimal, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+                    }catch (NullPointerException e)
+                    {
+                        throw new Erro("Dados invalidos");
+                    }  // ...ate aqui tobias e confirme que esta tudo certo
 
                     break;
                 case 3:
@@ -115,9 +125,14 @@ public class Main {
                     System.out.println("Digite a idade do animal a ser removido:");
                     int idadeRemover = sc.nextInt();
 
-                    removerAnimal(nomeRemover, idadeRemover);
-
-                    System.out.println("Animal removido.");
+                    try {  // mesmo esquema tobias...
+                        removerAnimal(nomeRemover, idadeRemover);
+                        System.out.println("Animal removido.");
+                    }
+                    catch (NullPointerException e)
+                    {
+                        throw new Erro("Dados invalidos");
+                    } // me avisa se tiver feito errado, tenho bastante dificuldade em checked e unchecked.
 
                     break;
                 case 4:
@@ -181,5 +196,7 @@ public class Main {
         } catch (IOException e) {
             System.out.println("Erro ao remover o animal.");
         }
-    }    
+    }
+    
+
 }
