@@ -236,6 +236,13 @@ public class Main {
         System.out.println("6 - Sair");
     }
 
+    public static void menuVisitante() {
+        System.out.println("Escolha uma opção:");
+        System.out.println("1 - Listar animais");
+        System.out.println("2 - Sobre qual animal deseja aprender?");
+        System.out.println("2 - Sair");
+    }
+
     public static void listarAnimais() {
         try {
             List<String> animais = Files.readAllLines(Paths.get("src/Infos/animais.txt"));
