@@ -14,6 +14,10 @@ public class Main {
         // Conjunto para armazenar os animais
         Set<Animal> animais = new HashSet<>();
 
+
+            DateTime dta = new DateTime(); 
+            System.out.println("Horario:" + dta.time_dateNow()); 
+
         // Processa cada linha do arquivo
         for (String dado : dados) {
             String[] partes = dado.split(","); // Divide os dados por vírgula
@@ -192,5 +196,7 @@ public class Main {
         } catch (IOException e) {
             System.out.println("Erro ao remover o animal.");
         }
-    }    
+    }
+    
+
 }
