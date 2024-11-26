@@ -12,6 +12,7 @@ public class Arara extends Animal implements Voar, Aves , Ovos {
 
     @Override
     public void local() {
+        System.out.println("As Araras estão localizadas na parte Sul do Zoo!");
 
     }
 
@@ -21,29 +22,28 @@ public class Arara extends Animal implements Voar, Aves , Ovos {
 
     }
 
-    @Override
-    public void cuidador() {
-
-    }
 
     @Override
     public void sangue() {
-        System.out.println("As Araras sao Animais de Sangue Quente!");
+        System.out.println("As Araras são Animais de Sangue Quente!");
 
     }
 
     @Override
     public void penagem() {
+        System.out.println("As Araras são possuem penagens com cores vibrantes e variadas, como azul, vermelho e verde!");
 
     }
 
     @Override
     public void botaOvo() {
+        System.out.println("As Araras são capazes de botar ovos com tonalidades variadas, como verde ou azul!");
 
     }
 
     @Override
     public void voar() {
+        System.out.println("As Araras podem voar e manter voo por cerca de 2 horas seguidas!");
 
     }
 }

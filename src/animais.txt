@@ -1,0 +1,11 @@
+Aguia,Macho,17
+Arara,Fêmea,25
+Crocodilo,Macho,8
+Sucuri,Fêmea,12
+Pinguim,Fêmea,3
+Jabuti,Macho,10
+Ornitorrinco,Fêmea,20
+Ra,Macho,15
+Salamandra,Fêmea,7
+Ra,Fêmea,11
+Lobo,Fêmea,7

@@ -8,9 +8,8 @@ import Interfaces.Veneno;
 public class Sapos extends Animal implements Anfibio , Veneno , Ovos , Aquatico {
 
 
-    public Sapos(String nome, int idade, String sexo) {
-
-        super(nome, idade, sexo);
+    public Sapos(String especie) {
+        super(especie);
     }
 
     @Override
@@ -20,7 +19,6 @@ public class Sapos extends Animal implements Anfibio , Veneno , Ovos , Aquatico 
 
     @Override
     public void alimento() {
-        System.out.println("Os Sapos sao carnivoro!");
 
     }
 
