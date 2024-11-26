@@ -34,6 +34,7 @@ public class Ornitorrinco extends Animal implements Aquatico, Ovos, Mamifero , V
 
     }
 
+
     @Override
     public void botaOvo() {
         System.out.println("Os ornitorrincos são capazes de botar ovos com cerca de 2 cm de comprimento!");

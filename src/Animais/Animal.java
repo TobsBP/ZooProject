@@ -17,4 +17,9 @@ public abstract class Animal {
     public String getNome() {
         return nome;
     }
+
+    public void getInfo() {
+        alimento();
+        sangue();
+    }
 }

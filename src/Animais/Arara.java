@@ -41,4 +41,10 @@ public class Arara extends Animal implements Voar, Aves , Ovos {
         System.out.println("As Araras podem voar e manter voo por cerca de 2 horas seguidas!");
 
     }
+
+    public void getInfo(){
+        botaOvo();
+        penagem();
+        voar();
+    }
 }
