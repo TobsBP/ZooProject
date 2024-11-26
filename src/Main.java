@@ -3,10 +3,12 @@ import java.nio.file.*;
 import java.util.*;
 import Animais.*;
 import Exception.Erro;
+import Func.DateTime;
+
 public class Main {
     public static void main(String[] args) throws Exception , Erro {
         // Caminho para o arquivo
-        Path path = Paths.get("src/animais.txt");
+        Path path = Paths.get("src/Infos/animais.txt");
 
         // Lê todas as linhas do arquivo
         List<String> dados = Files.readAllLines(path);
@@ -159,10 +161,9 @@ public class Main {
         System.out.println("5 - Sair");
     }
 
-    // Exibe os animais listados
     public static void listarAnimais() {
         try {
-            List<String> animais = Files.readAllLines(Paths.get("src/animais.txt"));
+            List<String> animais = Files.readAllLines(Paths.get("src/Infos/animais.txt"));
             for (String animal : animais) {
                 System.out.println(animal);
             }
@@ -173,7 +174,7 @@ public class Main {
 
     public static void removerAnimal(String nomeAnimal, int idadeAnimal) {
         try {
-            Path path = Paths.get("src/animais.txt");
+            Path path = Paths.get("src/Infos/animais.txt");
             // Lê todas as linhas do arquivo
             List<String> linhas = Files.readAllLines(path);
             List<String> novasLinhas = new ArrayList<>();
