@@ -9,6 +9,10 @@ public class Gorila extends Animal implements Terrestre , Mamifero {
         super(nome, idade, sexo);
     }
 
+    @Override
+    public void local() {
+        System.out.println("Os Gorilas estão localizados na parte Leste do Zoo!");
+    }
 
     @Override
     public void alimento() {
@@ -32,5 +36,10 @@ public class Gorila extends Animal implements Terrestre , Mamifero {
     public void terrestre() {
         System.out.println("Os Gorilas são animais terrestre e totalmente incapazes de nadar devido a seu peso.");
 
+    }
+
+    public void getInfo(){
+        terrestre();
+        mamar();
     }
 }

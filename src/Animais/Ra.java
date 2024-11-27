@@ -10,6 +10,10 @@ public class Ra extends Animal implements Anfibio , Ovos , Aquatico {
         super(nome, idade, sexo);
     }
 
+    @Override
+    public void local() {
+        System.out.println("As rãs estão localizadas na Zona Norte do Zoo!");
+    }
 
     public void alimento() {
         System.out.println("As rãs sao carnivoras!");
@@ -36,5 +40,11 @@ public class Ra extends Animal implements Anfibio , Ovos , Aquatico {
     public void botaOvo() {
         System.out.println("As rãs botam seus ovos na água, a falta de úmidade pode acarretar na morte do feto");
 
+    }
+
+    public void getInfo(){
+        nadar();
+        fase();
+        botaOvo();
     }
 }

@@ -11,6 +11,11 @@ public class Pinguim extends Animal implements Aves , Aquatico , Ovos {
     }
 
     @Override
+    public void local() {
+        System.out.println("Os pinguins estão localizados na zona Oeste do Zoo!");
+    }
+
+    @Override
     public void alimento() {
         System.out.println("Os pinguins sao animais carnivoros!");
 
@@ -38,5 +43,11 @@ public class Pinguim extends Animal implements Aves , Aquatico , Ovos {
     public void botaOvo() {
         System.out.println("Os pinguins são capazes de botar ovos enormes, medindo cerca de 13,5 cm x 9,5 cm!");
 
+    }
+
+    public void getInfo(){
+        nadar();
+        penagem();
+        botaOvo();
     }
 }

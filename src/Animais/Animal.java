@@ -21,5 +21,6 @@ public abstract class Animal {
     public void getInfo() {
         alimento();
         sangue();
+        local();
     }
 }

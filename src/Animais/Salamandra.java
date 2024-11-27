@@ -11,6 +11,10 @@ public class Salamandra extends Animal implements Anfibio , Ovos, Aquatico, Vene
         super(nome, idade, sexo);
     }
 
+    @Override
+    public void local() {
+        System.out.println("As Salamandras estão localizadas na Zona Leste do Zoo!");
+    }
 
     @Override
     public void alimento() {
@@ -47,5 +51,12 @@ public class Salamandra extends Animal implements Anfibio , Ovos, Aquatico, Vene
     public void veneno() {
         System.out.println("As Salamandras são extremamente venenosas, com glândulas de veneno espalhadas por toda a sua pele!");
 
+    }
+
+    public void getInfo(){
+        nadar();
+        veneno();
+        botaOvo();
+        fase();
     }
 }

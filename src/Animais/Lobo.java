@@ -8,6 +8,10 @@ public class Lobo extends Animal implements Terrestre , Mamifero {
         super(nome, idade, sexo);
     }
 
+    @Override
+    public void local() {
+        System.out.println("O lobo é um animal carnivoro!");
+    }
 
     @Override
     public void alimento() {
@@ -31,5 +35,10 @@ public class Lobo extends Animal implements Terrestre , Mamifero {
     public void terrestre() {
         System.out.println("Os lobos, apesar de poderem nadar por corto períodos de tempo, tendem evitar a água, preferindo o meio terrestre.");
 
+    }
+
+    public void getInfo(){
+        terrestre();
+        mamar();
     }
 }
