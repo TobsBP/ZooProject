@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.io.StringReader;
 import java.nio.file.*;
 import java.util.*;
 import Animais.*;
@@ -8,6 +9,7 @@ import Funcionarios.Funcionario;
 
 public class Main {
     public static void main(String[] args) throws Exception , Erro {
+        /*
         // Caminho para o arquivo
         Path path = Paths.get("src/Infos/animais.txt");
 
@@ -18,21 +20,28 @@ public class Main {
         Set<Animal> animais = new HashSet<>();
         Set<Funcionario> funcionarios = new HashSet<>();
 
-            DateTime dta = new DateTime(); 
-            System.out.println("Horario:" + dta.time_dateNow()); 
+        DateTime dta = new DateTime(); 
+        System.out.println("Horario:" + dta.time_dateNow()); 
 
-            Path path1 = Paths.get("src/Infos/FuncionarioStatus.txt");
+        Path path1 = Paths.get("src/Infos/FuncionarioStatus.txt");
 
-            List<String> dados1 = Files.readAllLines(path1);
-
-            for (String dado1 : dados1) {
-                String[] partes = dado1.split(","); // Divide os dados por vírgula
-                String nome_fun = partes[0].trim();   // Nome do Funcionario
-                int  idade_fun =Integer.parseInt(partes[1].trim());   // Idade do funcionario 
-                int strik = Integer.parseInt(partes[2].trim()); // quantidade de strik
-            }
+        List<String> dados1 = Files.readAllLines(path1); // caminho para o aquivo funcionario
+                
 
 
+         // for each para analizar as informaçoes dos funcionarios
+        for (String dado1 : dados1) {
+            String[] partes = dado1.split(","); // Divide os dados por vírgula
+            String nome_fun = partes[0].trim();   // Nome do Funcionario
+            int  idade_fun =Integer.parseInt(partes[1].trim());   // Idade do funcionario 
+            int strik = Integer.parseInt(partes[2].trim()); // quantidade de strik
+            int senha_fun = Integer.parseInt(partes[3].trim());
+        }
+
+        ////////////////////////////Teste////////////////////////////////////////////
+
+
+        /////////////////////// TESTE //////////////////////////////////////
 
         // Processa cada linha do arquivo
         for (String dado : dados) {
@@ -126,13 +135,13 @@ public class Main {
                     
                     String dadosAnimal = nome + "," + sexo + "," + idade + System.lineSeparator();
 
-                    try { // peço que de uma olhada da aqui...
+                    try { 
 
                         Files.writeString(path, dadosAnimal, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
                     }catch (NullPointerException e)
                     {
                         throw new Erro("Dados invalidos");
-                    }  // ...ate aqui tobias e confirme que esta tudo certo
+                    } 
 
                     break;
                 case 3:
@@ -149,7 +158,7 @@ public class Main {
                     catch (NullPointerException e)
                     {
                         throw new Erro("Dados invalidos");
-                    } // me avisa se tiver feito errado, tenho bastante dificuldade em checked e unchecked.
+                    } 
 
                     break;
                 case 4:
@@ -214,5 +223,69 @@ public class Main {
         }
     }
     
+     
+    public static void senha_fun()
+    {
+        Scanner scanner = new Scanner(System.in);
+        String arquivoSenhas = "FucionarioStatus.txt";  // Arquivo onde as senhas estão armazenadas
+        
+        System.out.print("Digite a senha: ");
+        String senhaInput = scanner.nextLine();  // Solicita a senha do usuário
+        
+        // Chama a função de verificação
+        String resultado = verificarSenha(, senhaInput);
+        System.out.println(resultado);
+        
+        scanner.close();
 
+        */
+        Set<Funcionario> funcionarios = new HashSet<>();
+        listarFuncionarios();
+        removerFucionario("Tobias", 20);
+
+
+    }
+    // Funcao para remover funcionarios do Zoo(Project)
+
+    public static void listarFuncionarios() {
+        try {
+            List<String> funcionarios = Files.readAllLines(Paths.get("src/Infos/FuncionarioStatus.txt"));
+            for (String Funcionario : funcionarios) {
+                System.out.println(Funcionario);
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao listar animais: " + e.getMessage());
+        }
+    }
+
+    public static void removerFucionario(String nome, int idade) {
+        try {
+            Path path = Paths.get("src/Infos/FuncionarioStatus.txt");
+            // Lê todas as linhas do arquivo
+            List<String> linhas = Files.readAllLines(path);
+            List<String> novasLinhas = new ArrayList<>();
+    
+            // Remove a linha que contém o nome e a idade
+            for (String linha : linhas) {
+                String[] dados = linha.split(",");
+                String nome_fun = dados[0];
+                int idade_fun = Integer.parseInt(dados[1]);
+                int strik = Integer.parseInt(dados[2]); 
+                int senha = Integer.parseInt(dados[3]); 
+    
+                // Se o nome ou a idade não corresponderem, mantenha a linha
+                if (!(nome.equals(nome_fun) && idade == idade_fun)) {
+                    novasLinhas.add(linha);
+                }
+            
+            }
+    
+            // Escreve as linhas atualizadas no arquivo
+            Files.write(path, novasLinhas, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+    
+        } catch (IOException e) {
+            System.out.println("Erro ao remover o funcionario.");
+        }
+    }
+    
 }
