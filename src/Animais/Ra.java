@@ -43,6 +43,9 @@ public class Ra extends Animal implements Anfibio , Ovos , Aquatico {
     }
     @Override
     public void getInfo(){
+        local();
+        alimento();
+        sangue();
         nadar();
         fase();
         botaOvo();
