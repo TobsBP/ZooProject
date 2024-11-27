@@ -37,7 +37,11 @@ public class Lobo extends Animal implements Terrestre , Mamifero {
 
     }
 
+    @Override
     public void getInfo(){
+        local();
+        alimento();
+        sangue();
         terrestre();
         mamar();
     }

@@ -45,7 +45,11 @@ public class Jabuti extends Animal implements Reptil , Ovos , Terrestre {
 
     }
 
+    @Override
     public void getInfo(){
+        local();
+        alimento();
+        sangue();
         terrestre();
         escamasPlacas();
         botaOvo();

@@ -45,7 +45,11 @@ public class Aguia extends Animal implements Voar, Ovos, Aves {
 
     }
 
+    @Override
     public void getInfo(){
+        local();
+        alimento();
+        sangue();
         penagem();
         botaOvo();
         voar();

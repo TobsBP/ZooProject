@@ -37,8 +37,11 @@ public class Morcego extends Animal implements Voar , Mamifero {
         System.out.println("Morcegos podem manter incríveis 12 horas de voo seguidas!");
 
     }
-
+    @Override
     public void getInfo(){
+        local();
+        alimento();
+        sangue();
         voar();
         mamar();
     }

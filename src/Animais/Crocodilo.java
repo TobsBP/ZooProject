@@ -46,7 +46,11 @@ public class Crocodilo extends Animal implements Reptil , Ovos , Aquatico {
 
     }
 
+    @Override
     public void getInfo(){
+        local();
+        alimento();
+        sangue();
         botaOvo();
         escamasPlacas();
         nadar();

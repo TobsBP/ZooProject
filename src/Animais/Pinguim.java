@@ -45,7 +45,11 @@ public class Pinguim extends Animal implements Aves , Aquatico , Ovos {
 
     }
 
+    @Override
     public void getInfo(){
+        local();
+        alimento();
+        sangue();
         nadar();
         penagem();
         botaOvo();

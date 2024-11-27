@@ -49,7 +49,11 @@ public class Sapo extends Animal implements Anfibio , Veneno , Ovos , Aquatico {
         System.out.println("Os Sapos, obrigatoriamente, precisam viver em um meio aquatico ou em um local extremamente úmido, ou morreram!");
     }
 
+    @Override
     public void getInfo(){
+        local();
+        alimento();
+        sangue();
         nadar();
         veneno();
         botaOvo();

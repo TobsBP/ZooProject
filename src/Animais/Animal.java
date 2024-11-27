@@ -10,7 +10,7 @@ public abstract class Animal {
         this.idade = idade;
         this.sexo = sexo;
     }
-
+    public abstract void local();
     public abstract void alimento();
     public abstract void sangue();
 
@@ -18,9 +18,6 @@ public abstract class Animal {
         return nome;
     }
 
-    public void getInfo() {
-        alimento();
-        sangue();
-        local();
-    }
+    public abstract void getInfo();   // eu testei em um codigo a parte, TEM QUE SER ABSTRACT
+    // eu preciso incerir local e alimento e sangue em cada getInfo de cada classe, se não, nao aparece o local, sangue e alimento
 }

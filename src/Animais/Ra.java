@@ -41,7 +41,7 @@ public class Ra extends Animal implements Anfibio , Ovos , Aquatico {
         System.out.println("As rãs botam seus ovos na água, a falta de úmidade pode acarretar na morte do feto");
 
     }
-
+    @Override
     public void getInfo(){
         nadar();
         fase();

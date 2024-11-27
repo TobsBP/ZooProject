@@ -46,7 +46,11 @@ public class Arara extends Animal implements Voar, Aves , Ovos {
 
     }
 
+    @Override
     public void getInfo(){
+        local();
+        alimento();
+        sangue();
         botaOvo();
         penagem();
         voar();

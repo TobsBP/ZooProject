@@ -38,7 +38,11 @@ public class Gorila extends Animal implements Terrestre , Mamifero {
 
     }
 
+    @Override
     public void getInfo(){
+        local();
+        alimento();
+        sangue();
         terrestre();
         mamar();
     }

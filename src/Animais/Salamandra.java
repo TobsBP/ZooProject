@@ -53,7 +53,11 @@ public class Salamandra extends Animal implements Anfibio , Ovos, Aquatico, Vene
 
     }
 
+    @Override
     public void getInfo(){
+        local();
+        alimento();
+        sangue();
         nadar();
         veneno();
         botaOvo();

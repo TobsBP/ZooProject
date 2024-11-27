@@ -52,7 +52,11 @@ public class Ornitorrinco extends Animal implements Aquatico, Ovos, Mamifero , V
 
     }
 
+    @Override
     public void getInfo(){
+        local();
+        alimento();
+        sangue();
         botaOvo();
         mamar();
         veneno();
