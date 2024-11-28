@@ -6,7 +6,6 @@ public class Funcionario {
     
     private String nome;
     private int idade;
-    private int strick;
     public String afazeres;
 
     public Funcionario(String nome, int idade, String afazeres) {
