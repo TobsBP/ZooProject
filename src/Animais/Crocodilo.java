@@ -10,6 +10,10 @@ public class Crocodilo extends Animal implements Reptil , Ovos , Aquatico {
         super(nome, idade, sexo);
     }
 
+    @Override
+    public void local() {
+        System.out.println("Os Crocodilos estão localizados na parte Norte do Zoo!");
+    }
 
     @Override
     public void alimento() {
@@ -40,5 +44,15 @@ public class Crocodilo extends Animal implements Reptil , Ovos , Aquatico {
     public void escamasPlacas() {
         System.out.println("As escamas de um Crocodilo são uma das mais resistentes do meio animal, podendo resister a impactos incríveis");
 
+    }
+
+    @Override
+    public void getInfo(){
+        local();
+        alimento();
+        sangue();
+        botaOvo();
+        escamasPlacas();
+        nadar();
     }
 }

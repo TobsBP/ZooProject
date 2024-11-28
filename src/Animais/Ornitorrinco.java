@@ -12,6 +12,11 @@ public class Ornitorrinco extends Animal implements Aquatico, Ovos, Mamifero , V
     }
 
     @Override
+    public void local() {
+        System.out.println("Os Ornitorrincos estão localizados na parte Leste do Zoo!");
+    }
+
+    @Override
     public void alimento() {
         System.out.println("Os ornitorrincos sao animais carnivoros!");
 
@@ -45,5 +50,16 @@ public class Ornitorrinco extends Animal implements Aquatico, Ovos, Mamifero , V
     public void veneno() {
         System.out.println("Apesar dos ornitorrincos possuirem veneno, ele é incrivelmente fraco e os ornitorrincos, normalmente, apenas o usam contra outros machos na época de acasalamento.");
 
+    }
+
+    @Override
+    public void getInfo(){
+        local();
+        alimento();
+        sangue();
+        botaOvo();
+        mamar();
+        veneno();
+        nadar();
     }
 }

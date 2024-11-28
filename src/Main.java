@@ -2,16 +2,18 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.util.*;
 import Animais.*;
+import Funcionarios.*;
 import Exception.Erro;
-
 
 public class Main {
     public static void main(String[] args) throws Exception, Erro {
         // Caminho para o arquivo
         Path path = Paths.get("src/Infos/animais.txt");
+        Path path2 = Paths.get("src/Infos/FuncionarioStatus.txt");
 
         // Lê todas as linhas do arquivo
         List<String> dados = Files.readAllLines(path);
+        List<String> dados2 = Files.readAllLines(path2);
 
         // Conjunto para armazenar os animais
         Set<Animal> animais = new HashSet<>();
@@ -80,165 +82,202 @@ public class Main {
 
         }
 
+        // Conjunto para armazenar os funcionários
+        Set<Funcionario> funcionarios = new HashSet<>();
+
+        // Processa cada linha do arquivo
+        for (String dado : dados2) {
+            String[] partes = dado.split(",");
+            String nome = partes[0].trim();
+            int idade = Integer.parseInt(partes[1].trim());
+            int strick = Integer.parseInt(partes[2].trim());
+            int senha = Integer.parseInt(partes[3].trim());
+            funcionarios.add(new Funcionario(nome, idade, strick, senha));
+        }
+
         Scanner sc = new Scanner(System.in);
         int op;
 
-        System.out.println("1- Funcionario");
-        System.out.println("2- Admin");
-        System.out.println("3- Visitante");
-        System.out.println("4- Sair");
+        do {
+            // Menu principal
+            System.out.println("\n===== MENU PRINCIPAL =====");
+            System.out.println("1- Funcionario");
+            System.out.println("2- Admin");
+            System.out.println("3- Visitante");
+            System.out.println("4- Sair");
+            System.out.print("Escolha uma opção: ");
+            op = sc.nextInt();
 
-        op = sc.nextInt();
-
-        switch (op) 
-        {
-        case 1:
-            do {
-                menuFuncionario();
-                sc.nextLine(); // Quebra de linha
-                op = sc.nextInt();
-                switch (op) {
-                    case 1:
-                        System.out.println("Animais listados");
-                        listarAnimais();
-                        break;
-                    case 2:
-                        System.out.println("Sair");
-                        break;
-                    default:
-                        System.out.println("Opção inválida!");
-                }
-            } while (op != 2);
-            break;
-        case 2:
-            sc.nextLine(); // Quebra de linha
-            do {
-                menuAdmin();
-                op = sc.nextInt();
-                sc.nextLine(); // Quebra de linha
-                switch (op) {
-                    case 0:
-                        System.out.println("Animais listados");
-                        listarAnimais();
-                        break;
-                    case 1:
-                        System.out.println("Adicionar animal");
-
-                        System.out.print("Digite o nome do animal: ");
-                        String nome = sc.nextLine();
-
-                        System.out.println("Qual o sexo do animal (1 - Macho, 2 - Fêmea): ");
-                        String sexo = sc.nextInt() == 1 ? "Macho" : "Fêmea";
-                        sc.nextLine(); // Quebra de linha
-
-                        System.out.println("Digite a idade do animal: ");
-                        int idade = sc.nextInt();
-
-                        String dadosAnimal = nome + "," + sexo + "," + idade + System.lineSeparator();
-
-                        try {
-                            Files.writeString(path, dadosAnimal, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
-                        } catch (NullPointerException e) {
-                            throw new Erro("Dados invalidos");
+            switch (op) {
+                case 1:
+                    // Submenu Funcionario
+                    int opFuncionario;
+                    do {
+                        menuFuncionario();
+                        opFuncionario = sc.nextInt();
+                        switch (opFuncionario) {
+                            case 1:
+                                System.out.println("Animais listados:");
+                                listarAnimais(animais);
+                                break;
+                            case 2:
+                                System.out.println("Operação ainda não implementada.");
+                                break;
+                            case 3:
+                                System.out.println("Voltando ao menu principal...");
+                                break;
+                            default:
+                                System.out.println("Opção inválida!");
                         }
+                    } while (opFuncionario != 3);
+                    break;
 
-                        break;
-                    case 2:
-                        System.out.println("Digite o nome do animal a ser removido:");
-                        String nomeRemover = sc.nextLine();
+                case 2:
+                    // Submenu Admin
+                    int opAdmin;
+                    do {
+                        menuAdmin();
+                        opAdmin = sc.nextInt();
+                        sc.nextLine(); // Consumir quebra de linha
+                        switch (opAdmin) {
+                            case 0:
+                                System.out.println("Animais listados:");
+                                listarAnimais(animais);
+                                break;
+                            case 1:
+                                System.out.println("Adicionar animal");
+                                System.out.print("Digite o nome do animal: ");
+                                String nome = sc.nextLine();
 
-                        System.out.println("Digite a idade do animal a ser removido:");
-                        int idadeRemover = sc.nextInt();
+                                System.out.print("Qual o sexo do animal (1 - Macho, 2 - Fêmea): ");
+                                String sexo = sc.nextInt() == 1 ? "Macho" : "Fêmea";
+                                sc.nextLine(); // Consumir quebra de linha
 
-                        try {
-                            removerAnimal(nomeRemover, idadeRemover);
-                            System.out.println("Animal removido.");
-                        } catch (NullPointerException e) {
-                            throw new Erro("Dados invalidos");
+                                System.out.print("Digite a idade do animal: ");
+                                int idade = sc.nextInt();
+                                sc.nextLine(); // Consumir quebra de linha
+
+                                String dadosAnimal = nome + "," + sexo + "," + idade + System.lineSeparator();
+                                try {
+                                    Files.writeString(path, dadosAnimal, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+                                    System.out.println("Animal adicionado com sucesso!");
+                                } catch (Exception e) {
+                                    System.out.println("Erro ao adicionar animal: " + e.getMessage());
+                                }
+                                break;
+
+                            case 2:
+                                System.out.println("Digite o nome do animal a ser removido:");
+                                String nomeRemover = sc.nextLine();
+                                System.out.print("Digite a idade do animal a ser removido: ");
+                                int idadeRemover = sc.nextInt();
+                                sc.nextLine(); // Consumir quebra de linha
+
+                                try {
+                                    removerAnimal(nomeRemover, idadeRemover);
+                                    System.out.println("Animal removido com sucesso.");
+                                } catch (Exception e) {
+                                    System.out.println("Erro ao remover animal: " + e.getMessage());
+                                }
+                                break;
+
+                            case 3:
+                                System.out.println("Listar funcionários:");
+                                listarFuncionarios(funcionarios);
+                                break;
+
+                            case 4:
+                                System.out.println("Demitir funcionário (não implementado).");
+                                System.out.print("Digite o nome do funcionário a ser demitido:");
+                                String nomeRemover_func = sc.nextLine();
+                                System.out.print("Digite a idade do funcionário a ser demitido: ");
+                                int idadeRemover_func = sc.nextInt();
+                                removerFuncionario(nomeRemover_func, idadeRemover_func);
+                                break;
+
+                            case 5:
+                                System.out.println("Contratar funcionário (não implementado).");
+                                break;
+
+                            case 6:
+                                System.out.println("Voltando ao menu principal...");
+                                break;
+
+                            default:
+                                System.out.println("Opção inválida!");
                         }
+                    } while (opAdmin != 6);
+                    break;
 
-                        break;
-                    case 3:
-                        System.out.println("Listar funcionarios");
-                        // listarFuncionario();
-                        break;
-                    case 4:
-                        System.out.println("Demitir funcionario");
-                        // demitrFuncionario();
-                        break;
-                    case 5:
-                        System.out.println("Contratar funcionario");
-                        // contratarFuncionario();
-                        break;
-                    case 6:
-                        System.out.println("Sair");
-                        break;
-                    default:
-                        System.out.println("Opção inválida!");
-                }
-            } while (op != 6);
-            case 3:
-                do {
-                    menuVisitante();
-                    sc.nextLine(); // Quebra de linha
-                    op = sc.nextInt();
-                    switch (op) {
-                        case 1:
-                            System.out.println("Animais listados");
-                            listarAnimais();
-                            break;
-                        case 2:
-                            sc.nextLine();
-                            String nomeAnimal = sc.nextLine();
-                            funcAnimais(nomeAnimal, animais);
-                        break;
-                        case 3:
-                            System.out.println("Sair");
-                            break;
-                        default:
-                            System.out.println("Opção inválida!");
-                    }
-                } while (op != 3);
-                break;
-            default:
-                System.out.println("Opção inválida!");
-        }
+                case 3:
+                    // Submenu Visitante
+                    int opVisitante;
+                    do {
+                        menuVisitante();
+                        opVisitante = sc.nextInt();
+                        sc.nextLine(); // Consumir quebra de linha
+                        switch (opVisitante) {
+                            case 1:
+                                System.out.println("Animais listados:");
+                                listarAnimais(animais);
+                                break;
+                            case 2:
+                                System.out.print("Digite o nome do animal que deseja saber mais: ");
+                                String nomeAnimal = sc.nextLine();
+                                funcAnimais(nomeAnimal, animais);
+                                break;
+                            case 3:
+                                System.out.println("Voltando ao menu principal...");
+                                break;
+                            default:
+                                System.out.println("Opção inválida!");
+                        }
+                    } while (opVisitante != 3);
+                    break;
+
+                case 4:
+                    System.out.println("Saindo... Até logo!");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida! Tente novamente.");
+            }
+        } while (op != 4);
+
         sc.close();
     }
 
-    public static void menuFuncionario() {
-        System.out.println("Escolha uma opção:");
-        System.out.println("1 - Listar animais");
-        System.out.println("2 - Afazeres");
-        System.out.println("3 - Sair");
+    private static void menuFuncionario() {
+        System.out.println("\n===== MENU FUNCIONÁRIO =====");
+        System.out.println("1- Listar Animais");
+        System.out.println("2- Outra Opção");
+        System.out.println("3- Voltar");
+        System.out.print("Escolha uma opção: ");
     }
 
-    public static void menuAdmin() {
-        System.out.println("Escolha uma opção:");
-        System.out.println("0 - Listar animais");
-        System.out.println("1 - Adcionar animal");
-        System.out.println("2 - Remover animal");
-        System.out.println("3 - Listar funcionarios");
-        System.out.println("4 - Demitir funcionario");
-        System.out.println("5 - Contratar funcionario");
-        System.out.println("6 - Sair");
+    private static void menuAdmin() {
+        System.out.println("\n===== MENU ADMIN =====");
+        System.out.println("0- Listar Animais");
+        System.out.println("1- Adicionar Animal");
+        System.out.println("2- Remover Animal");
+        System.out.println("3- Listar Funcionários");
+        System.out.println("4- Demitir Funcionário");
+        System.out.println("5- Contratar Funcionário");
+        System.out.println("6- Voltar");
+        System.out.print("Escolha uma opção: ");
     }
 
-    public static void menuVisitante() {
-        System.out.println("Escolha uma opção:");
-        System.out.println("1 - Listar animais");
-        System.out.println("2 - Sobre qual animal deseja aprender?");
-        System.out.println("3 - Sair");
+    private static void menuVisitante() {
+        System.out.println("\n===== MENU VISITANTE =====");
+        System.out.println("1- Listar Animais");
+        System.out.println("2- Buscar Informações sobre Animal");
+        System.out.println("3- Voltar");
+        System.out.print("Escolha uma opção: ");
     }
 
-    public static void listarAnimais() {
-        try {
-            List<String> animais = Files.readAllLines(Paths.get("src/Infos/animais.txt"));
-            for (String animal : animais) {
-                System.out.println(animal);
-            }
-        } catch (Exception e) {
-            System.out.println("Erro ao listar animais: " + e.getMessage());
+    public static void listarAnimais(Set<Animal> animais) {
+        for (Animal animal : animais) {
+            System.out.println(animal.getNome());
         }
     }
 
@@ -274,6 +313,39 @@ public class Main {
             if (animal.getNome().equals(nome)) {
                 animal.getInfo();
             }
+        }
+    }
+
+    public static void listarFuncionarios(Set<Funcionario> funcionarios) {
+        for (Funcionario funcionario : funcionarios) {
+            funcionario.getInfoAdmin();
+        }
+    }
+
+    public static void removerFuncionario(String nome, int idade) {
+        try {
+            Path path = Paths.get("src/Infos/FuncionariosStatus.txt");
+            // Lê todas as linhas do arquivo
+            List<String> linhas = Files.readAllLines(path);
+            List<String> novasLinhas = new ArrayList<>();
+
+            // Remove a linha que contém o nome e a idade
+            for (String linha : linhas) {
+                String[] dados = linha.split(",");
+                String nome_func = dados[0];
+                int idade_func = Integer.parseInt(dados[2]);
+
+                // Se o nome ou a idade não corresponderem, mantenha a linha
+                if (!(nome_func.equals(nome) && idade_func == idade)) {
+                    novasLinhas.add(linha);
+                }
+            }
+
+            // Escreve as linhas atualizadas no arquivo
+            Files.write(path, novasLinhas, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+
+        } catch (IOException e) {
+            System.out.println("Erro ao remover o funcionário.");
         }
     }
 }

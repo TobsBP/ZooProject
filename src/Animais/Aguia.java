@@ -10,6 +10,10 @@ public class Aguia extends Animal implements Voar, Ovos, Aves {
         super(nome, idade, sexo);
     }
 
+    @Override
+    public void local() {
+        System.out.println("As Aguias estão localizadas no setor Sul do Zoo!");
+    }
 
     @Override
     public void alimento() {
@@ -39,5 +43,15 @@ public class Aguia extends Animal implements Voar, Ovos, Aves {
     public void voar() {
         System.out.println("As Aguias podem voar por mais de 8 horas seguidas!");
 
+    }
+
+    @Override
+    public void getInfo(){
+        local();
+        alimento();
+        sangue();
+        penagem();
+        botaOvo();
+        voar();
     }
 }

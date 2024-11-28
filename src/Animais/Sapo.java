@@ -14,6 +14,11 @@ public class Sapo extends Animal implements Anfibio , Veneno , Ovos , Aquatico {
     }
 
     @Override
+    public void local() {
+        System.out.println("Os Sapos estão localizados na zona Norte do Zoo!");
+    }
+
+    @Override
     public void alimento() {
         System.out.println("Os Sapos sao carnivoro!");
     }
@@ -21,7 +26,6 @@ public class Sapo extends Animal implements Anfibio , Veneno , Ovos , Aquatico {
     @Override
     public void sangue() {
         System.out.println("Os Sapos sao animais de Sangue Frio!");
-        System.out.println("Os Sapos são animais de Sangue Frio!");
     }
 
     @Override
@@ -43,5 +47,16 @@ public class Sapo extends Animal implements Anfibio , Veneno , Ovos , Aquatico {
     @Override
     public void nadar() {
         System.out.println("Os Sapos, obrigatoriamente, precisam viver em um meio aquatico ou em um local extremamente úmido, ou morreram!");
+    }
+
+    @Override
+    public void getInfo(){
+        local();
+        alimento();
+        sangue();
+        nadar();
+        veneno();
+        botaOvo();
+        fase();
     }
 }
