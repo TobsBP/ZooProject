@@ -1,4 +1,4 @@
 Caio,30,Alimentar Aguia
-Igor,32,Vacinar Crocodilo
 Tobias,20,Administrar o caixa
-Fuad,25,Limpa merda
+Fuad,25,Colocar agua para os pinguins
+Jonas,80,nadar com os jabutis

@@ -194,7 +194,7 @@ public class Main {
                                 String nomeRemover_func = sc.nextLine();
                                 System.out.print("Digite a idade do funcionário a ser demitido: ");
                                 int idadeRemover_func = sc.nextInt();
-                                removerFucionario(nomeRemover_func, idadeRemover_func, funcionarios);
+                                funcionarios = removerFucionario(nomeRemover_func, idadeRemover_func, funcionarios);
                                 break;
                             case 5:
                                 System.out.println("Contratar pessoa");
@@ -341,7 +341,7 @@ public class Main {
         }
     }
 
-    public static Set<Funcionario> removerFucionario(String nome, int idade, Set<Funcionario> funcionarios) {
+    public static Set<Funcionario> removerFucionario(String nome, int idade, Set<Funcionario> funcionarios) throws Erro {
         try {
             Path path = Paths.get("src/Infos/FuncionarioStatus.txt");
             // Lê todas as linhas do arquivo
@@ -355,22 +355,24 @@ public class Main {
                 int idade_fun = Integer.parseInt(dados[1]);
     
                 // Se o nome ou a idade não corresponderem, mantenha a linha
-                if (!(nome.equals(nome_fun) && idade == idade_fun)) {
+                if (!(nome_fun.equals(nome) && idade == idade_fun)) {
                     novasLinhas.add(linha);
                 }
             }
 
-            for (Funcionario funcionario : funcionarios) {
+            Iterator<Funcionario> iterator = funcionarios.iterator();
+            while (iterator.hasNext()) {
+                Funcionario funcionario = iterator.next();
                 if (nome.equals(funcionario.getNome()) && idade == funcionario.getIdade()) {
-                    funcionarios.remove(funcionario);
-                } 
+                    iterator.remove();
+                }
             }
     
             // Escreve as linhas atualizadas no arquivo
             Files.write(path, novasLinhas, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
     
         } catch (IOException e) {
-            System.out.println("Erro ao remover o funcionario.");
+            throw new Erro("Erro ao remover o funcionário.");
         }
         return funcionarios;
     }

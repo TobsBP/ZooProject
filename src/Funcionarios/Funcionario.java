@@ -1,7 +1,5 @@
 package Funcionarios;
 
-import java.text.StringCharacterIterator;
-
 public class Funcionario {
     
     private String nome;

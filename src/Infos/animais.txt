@@ -8,3 +8,4 @@ Ornitorrinco,Fêmea,20
 Ra,Macho,15
 Salamandra,Fêmea,7
 Ra,Fêmea,11
+Aguia,Fêmea,1
