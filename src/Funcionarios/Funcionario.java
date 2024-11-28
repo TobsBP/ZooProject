@@ -1,21 +1,22 @@
 package Funcionarios;
 
+import java.text.StringCharacterIterator;
+
 public class Funcionario {
     
     private String nome;
     private int idade;
     private int strick;
-    private int senha;
+    public String afazeres;
 
-    public Funcionario(String nome, int idade , int strick, int senha){
+    public Funcionario(String nome, int idade, String afazeres) {
          this.nome = nome;
          this.idade = idade;  
-         this.strick = strick; 
-         this.senha = senha;
+         this.afazeres = afazeres;
     }
 
     public void getInfoAdmin() {
-        System.out.println("Funcionario: " + nome + " Idade: " + idade + " Strick: " + strick + " Senha: " + senha);
+        System.out.println("Funcionario: " + nome + " Idade: " + idade);
     }
 
     public String getNome() {
@@ -26,4 +27,7 @@ public class Funcionario {
         return idade;
     }
 
+    public String getAfazeres() {
+        return afazeres;
+    }
 }

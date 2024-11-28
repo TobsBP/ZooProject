@@ -90,9 +90,8 @@ public class Main {
             String[] partes = dado.split(",");
             String nome = partes[0].trim();
             int idade = Integer.parseInt(partes[1].trim());
-            int strick = Integer.parseInt(partes[2].trim());
-            int senha = Integer.parseInt(partes[3].trim());
-            funcionarios.add(new Funcionario(nome, idade, strick, senha));
+            String afazeres = partes[2].trim();
+            funcionarios.add(new Funcionario(nome, idade, afazeres));
         }
 
         Scanner sc = new Scanner(System.in);
@@ -115,13 +114,16 @@ public class Main {
                     do {
                         menuFuncionario();
                         opFuncionario = sc.nextInt();
+                        sc.nextLine(); // Consumir quebra de linha
                         switch (opFuncionario) {
                             case 1:
                                 System.out.println("Animais listados:");
                                 listarAnimais(animais);
                                 break;
                             case 2:
-                                System.out.println("Operação ainda não implementada.");
+                                System.out.println("Digite seu nome para ver seus Afazeres:");
+                                String nomeAfazeres = sc.nextLine();
+                                funcAfazeres(funcionarios, nomeAfazeres);
                                 break;
                             case 3:
                                 System.out.println("Voltando ao menu principal...");
@@ -188,7 +190,6 @@ public class Main {
                                 break;
 
                             case 4:
-                                System.out.println("Demitir funcionário (não implementado).");
                                 System.out.print("Digite o nome do funcionário a ser demitido:");
                                 String nomeRemover_func = sc.nextLine();
                                 System.out.print("Digite a idade do funcionário a ser demitido: ");
@@ -204,11 +205,15 @@ public class Main {
                                 int idade_newFunc = sc.nextInt();
                                 sc.nextLine(); // Consumir quebra de linha
 
-                                String dadosPessoa = nome_newFunc + "," + idade_newFunc + System.lineSeparator();
+                                System.out.print("Qual a atividade da pessoa:");
+                                String atividade = sc.nextLine();
+                                sc.nextLine(); // Consumir quebra de linha
+
+                                String dadosPessoa = nome_newFunc + "," + idade_newFunc + "," + atividade + System.lineSeparator();
                                 try {
                                     Files.writeString(path2, dadosPessoa, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
                                     System.out.println("Pessoa adicionado com sucesso!");
-                                    funcionarios.add(new Funcionario(nome_newFunc, idade_newFunc, 0, 0));
+                                    funcionarios.add(new Funcionario(nome_newFunc, idade_newFunc, atividade));
                                 } catch (Exception e) {
                                     System.out.println("Erro ao adicionar pessoa: " + e.getMessage());
                                 }
@@ -264,7 +269,7 @@ public class Main {
     private static void menuFuncionario() {
         System.out.println("\n===== MENU FUNCIONÁRIO =====");
         System.out.println("1- Listar Animais");
-        System.out.println("2- Outra Opção");
+        System.out.println("2- Meus afazeres");
         System.out.println("3- Voltar");
         System.out.print("Escolha uma opção: ");
     }
@@ -368,5 +373,13 @@ public class Main {
             System.out.println("Erro ao remover o funcionario.");
         }
         return funcionarios;
+    }
+
+    public static void funcAfazeres(Set<Funcionario> funcionarios, String nome) {
+        for (Funcionario funcionario : funcionarios) {
+            if (nome.equals(funcionario.getNome())){
+                System.out.println( funcionario.getAfazeres());
+            }
+        }
     }
 }

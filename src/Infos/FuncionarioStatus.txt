@@ -1,4 +1,4 @@
-Caio,30,2,3252
-Igor,32,1,4654
-Tobias,20,0,28796
-Gabs,25
+Caio,30,Alimentar Aguia
+Igor,32,Vacinar Crocodilo
+Tobias,20,Administrar o caixa
+Fuad,25,Limpa merda
