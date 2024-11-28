@@ -160,6 +160,7 @@ public class Main {
                                 String dadosAnimal = nome + "," + sexo + "," + idade + System.lineSeparator();
                                 try {
                                     Files.writeString(path, dadosAnimal, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+                                    
                                     System.out.println("Animal adicionado com sucesso!");
                                 } catch (Exception e) {
                                     System.out.println("Erro ao adicionar animal: " + e.getMessage());
@@ -192,13 +193,26 @@ public class Main {
                                 String nomeRemover_func = sc.nextLine();
                                 System.out.print("Digite a idade do funcionário a ser demitido: ");
                                 int idadeRemover_func = sc.nextInt();
-                                removerFuncionario(nomeRemover_func, idadeRemover_func);
+                                removerFucionario(nomeRemover_func, idadeRemover_func, funcionarios);
                                 break;
-
                             case 5:
-                                System.out.println("Contratar funcionário (não implementado).");
-                                break;
+                                System.out.println("Contratar pessoa");
+                                System.out.print("Digite o nome da pessoa: ");
+                                String nome_newFunc = sc.nextLine();
 
+                                System.out.print("Qual a idade da pessoa:");
+                                int idade_newFunc = sc.nextInt();
+                                sc.nextLine(); // Consumir quebra de linha
+
+                                String dadosPessoa = nome_newFunc + "," + idade_newFunc + System.lineSeparator();
+                                try {
+                                    Files.writeString(path2, dadosPessoa, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+                                    System.out.println("Pessoa adicionado com sucesso!");
+                                    funcionarios.add(new Funcionario(nome_newFunc, idade_newFunc, 0, 0));
+                                } catch (Exception e) {
+                                    System.out.println("Erro ao adicionar pessoa: " + e.getMessage());
+                                }
+                                break;
                             case 6:
                                 System.out.println("Voltando ao menu principal...");
                                 break;
@@ -322,30 +336,37 @@ public class Main {
         }
     }
 
-    public static void removerFuncionario(String nome, int idade) {
+    public static Set<Funcionario> removerFucionario(String nome, int idade, Set<Funcionario> funcionarios) {
         try {
-            Path path = Paths.get("src/Infos/FuncionariosStatus.txt");
+            Path path = Paths.get("src/Infos/FuncionarioStatus.txt");
             // Lê todas as linhas do arquivo
             List<String> linhas = Files.readAllLines(path);
             List<String> novasLinhas = new ArrayList<>();
-
+    
             // Remove a linha que contém o nome e a idade
             for (String linha : linhas) {
                 String[] dados = linha.split(",");
-                String nome_func = dados[0];
-                int idade_func = Integer.parseInt(dados[2]);
-
+                String nome_fun = dados[0];
+                int idade_fun = Integer.parseInt(dados[1]);
+    
                 // Se o nome ou a idade não corresponderem, mantenha a linha
-                if (!(nome_func.equals(nome) && idade_func == idade)) {
+                if (!(nome.equals(nome_fun) && idade == idade_fun)) {
                     novasLinhas.add(linha);
                 }
             }
 
+            for (Funcionario funcionario : funcionarios) {
+                if (nome.equals(funcionario.getNome()) && idade == funcionario.getIdade()) {
+                    funcionarios.remove(funcionario);
+                } 
+            }
+    
             // Escreve as linhas atualizadas no arquivo
             Files.write(path, novasLinhas, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-
+    
         } catch (IOException e) {
-            System.out.println("Erro ao remover o funcionário.");
+            System.out.println("Erro ao remover o funcionario.");
         }
+        return funcionarios;
     }
 }

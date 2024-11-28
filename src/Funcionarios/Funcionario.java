@@ -18,4 +18,12 @@ public class Funcionario {
         System.out.println("Funcionario: " + nome + " Idade: " + idade + " Strick: " + strick + " Senha: " + senha);
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
 }
